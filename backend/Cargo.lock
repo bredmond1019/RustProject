@@ -301,7 +301,10 @@ dependencies = [
  "dotenv",
  "juniper 0.15.12",
  "juniper_actix",
+ "serde",
+ "serde_json",
  "tokio",
+ "uuid",
 ]
 
 [[package]]
