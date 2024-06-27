@@ -27,7 +27,7 @@ impl User {
     pub fn find_all(
         conn: &mut PooledConnection<ConnectionManager<PgConnection>>,
     ) -> Result<Vec<User>, diesel::result::Error> {
-        let all_users = users::table.load(conn);
+        let all_users: Result<Vec<User>, diesel::result::Error> = users::table.load(conn);
         info!("{:?}", &all_users);
         all_users
     }
@@ -36,7 +36,7 @@ impl User {
         new_user: NewUser,
         conn: &mut PgConnection,
     ) -> Result<User, diesel::result::Error> {
-        let user = diesel::insert_into(users::table)
+        let user: Result<User, diesel::result::Error> = diesel::insert_into(users::table)
             .values(&new_user)
             .get_result(conn);
         user
