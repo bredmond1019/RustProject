@@ -1,0 +1,4 @@
+.env
+backend/target/
+diesel.toml
+.DS_Store
